@@ -1,7 +1,11 @@
+body {
+    background: #FFFEF8;
+}
+
 .page-container {
     --grid-padding: 20px;
 
-    max-width: 1044px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
@@ -49,9 +53,8 @@
         &:before {
             content: '';
             position: absolute;
-            top: 50%;
+            top: 20px;
             left: 0;
-            transform: translateY(-50%);
             width: 5px;
             height: 5px;
             background: var(--c-white);
@@ -77,6 +80,7 @@
     .post-wrap {
         padding: 20px;
         position: relative;
+        background: var(--c-white);
     }
 
     .author {

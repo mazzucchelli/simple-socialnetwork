@@ -26,7 +26,8 @@ class App extends Component {
                     config.postsLength = result.length;
                     this.setState({
                         isLoaded: true,
-                        posts: result.reverse().slice(0, 5)
+                        posts: result.reverse()
+                        // posts: result.reverse().slice(0, 30)
                     });
                 }, (error) => {
                     this.setState({
@@ -74,6 +75,7 @@ class App extends Component {
                                 <Article
                                     key={post.id}
                                     author={users.filter(user => user.id === post.userId).map(user => user.name).toString()}
+                                    authorId={post.userId}
                                     postId={post.id}
                                     postTitle={post.title}
                                     postBody={post.body} />

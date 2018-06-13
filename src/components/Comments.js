@@ -35,19 +35,23 @@ class Comments extends Component {
         } else if (!isLoaded) {
             return '';
         } else {
-            return (
-                <div className="comments-wrap">
-                    <ul>
-                        {comments.map(comment => (
-                            <li key={comment.id}>
-                                <span className="author">{comment.email}</span>
-                                <h6>{comment.name}</h6>
-                                <p>{comment.body}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )
+            if ( comments.length > 0 ) {
+                return (
+                    <div className="comments-wrap">
+                        <ul>
+                            {comments.map(comment => (
+                                <li key={comment.id}>
+                                    <span className="author">{comment.email}</span>
+                                    <h6>{comment.name}</h6>
+                                    <p>{comment.body}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            } else {
+                return '';
+            }
         }
     }
 }

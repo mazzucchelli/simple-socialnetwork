@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import config from '../config.js';
 
 import Comments from './Comments.js';
 
@@ -36,10 +37,7 @@ class Article extends Component {
                     </div>
                     <h1 className="h4 title">{this.props.postTitle}</h1>
                     <p>{this.props.postBody}</p>
-                    <div className="btn-wrap">
-                        <button className="btn rounded" onClick={() => {this.deletePost(this.props.postId)}}><i className="fas fa-trash-alt"></i></button>
-                        <button className="btn rounded" onClick={() => {this.editPost(this.props.postId)}}><i className="fas fa-pencil-alt"></i></button>
-                    </div>
+                    {this.extraActions()}
                 </div>
                 <Comments postId={this.props.postId} />
             </article>
@@ -59,16 +57,35 @@ class Article extends Component {
                         </span>
                     </div>
                     <input type="text" placeholder="Dai un titolo al tuo post" onChange={this.onTitleChange.bind(this)} value={this.state.titleToEdit}/>
-                    <textarea rows="4" placeholder="Scrivi un post.." onChange={this.onBodyChange.bind(this)} value={this.state.bodyToEdit}></textarea>
+                    <textarea autoFocus rows="4" placeholder="Scrivi un post.." onChange={this.onBodyChange.bind(this)} value={this.state.bodyToEdit}></textarea>
+                    {this.extraActions('edit')}
+                </div>
+                <Comments postId={this.props.postId} />
+            </article>
+        );
+    }
+
+    extraActions(view = 'normal') {
+        if ( this.props.authorId === config.currentUserId ) {
+            if ( view === 'edit') {
+                return (
                     <div className="btn-wrap">
                         <button className="btn rounded" onClick={() => {this.deletePost(this.props.postId)}}><i className="fas fa-trash-alt"></i></button>
                         <button className="btn rounded" onClick={() => {this.editPost(this.props.postId)}}><i className="fas fa-undo-alt"></i></button>
                         <button className="btn rounded" onClick={() => {this.updatePost(this.props.postId)}}><i className="fas fa-arrow-right"></i></button>
                     </div>
-                </div>
-                <Comments postId={this.props.postId} />
-            </article>
-        );
+                )
+            } else {
+                return (
+                    <div className="btn-wrap">
+                        <button className="btn rounded" onClick={() => {this.deletePost(this.props.postId)}}><i className="fas fa-trash-alt"></i></button>
+                        <button className="btn rounded" onClick={() => {this.editPost(this.props.postId)}}><i className="fas fa-pencil-alt"></i></button>
+                    </div>
+                )
+            }
+        } else {
+            return '';
+        }
     }
 
     setView() {
@@ -89,7 +106,7 @@ class Article extends Component {
 
     updatePost(postId) {
         fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-            method: 'PUT',
+            method: 'PATCH',
             body: JSON.stringify({
                 title: this.state.titleToEdit,
                 body: this.state.bodyToEdit
@@ -129,7 +146,8 @@ Article.propTypes = {
     postId: PropTypes.number.isRequired,
     postTitle: PropTypes.string,
     postBody: PropTypes.string,
-    author: PropTypes.string.isRequired
+    author: PropTypes.string.isRequired,
+    authorId: PropTypes.number.isRequired
 }
 
 export default Article;
