@@ -53,13 +53,7 @@ class AddPost extends Component {
     render() {
         return (
             <form onSubmit={this.onSubmit.bind(this)}>
-                <label className="hide">
-                    Post title
-                </label>
                 <input type="text" placeholder="Dai un titolo al tuo post" onChange={this.onTitleChange.bind(this)} value={this.state.postTitle}/>
-                <label className="hide">
-                    Post
-                </label>
                 <textarea placeholder="Scrivi un post.." onChange={this.onBodyChange.bind(this)} value={this.state.postBody}></textarea>
                 <button>Submit</button>
             </form>

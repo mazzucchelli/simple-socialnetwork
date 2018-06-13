@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import config from './config.js';
 
-import Comments from './components/Comments.js';
-import AddPost from './components/AddPost.js';
 import Sidebar from './components/Sidebar.js';
+import AddPost from './components/AddPost.js';
+import Article from './components/Article.js';
 
 import './App.css';
 import './assets/avatar.jpg';
@@ -11,7 +11,6 @@ import './assets/avatar.jpg';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.deletePost = this.deletePost.bind(this);
         this.state = {
             error: null,
             isLoaded: false,
@@ -55,15 +54,6 @@ class App extends Component {
         this.setState(this.state);
     }
 
-    deletePost(postId) {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-            method: 'DELETE',
-        })
-        .then(result => {
-            console.log('result', result);
-        })
-    }
-
     render() {
         const { error, isLoaded, posts, users } = this.state;
         if (error) {
@@ -82,20 +72,12 @@ class App extends Component {
                         </section>
                         <section className="posts-wrap">
                             {posts.map(post => (
-                                <article key={post.id} className="article box-layout">
-                                    <div className="author">
-                                        <div className="avatar-wrap">
-                                            <img src="https://www.epay.com/en/templates/Epay.en/assets/images/avatar.jpg" alt="Mario Rossi" />
-                                        </div>
-                                        <span className="author-name">
-                                            {users.filter(user => user.id === post.userId).map(user => user.name)}
-                                        </span>
-                                    </div>
-                                    <h1 className="h4 title">{post.title}</h1>
-                                    <p>{post.body}</p>
-                                    <button className="btn" onClick={() => {this.deletePost(post.id)}}>Remove</button>
-                                    <Comments postId={post.id}/>
-                                </article>
+                                <Article
+                                    key={post.id}
+                                    author={users.filter(user => user.id === post.userId).map(user => user.name)}
+                                    postId={post.id}
+                                    postTitle={post.title}
+                                    postBody={post.body} />
                             ))}
                         </section>
                     </main>
