@@ -39,7 +39,7 @@ class Comments extends Component {
                 <ul>
                     {comments.map(comment => (
                         <li key={comment.id}>
-                            {comment.name} - {comment.body}
+                            {comment.name} - {comment.body} - {comment.email}
                         </li>
                     ))}
                 </ul>
