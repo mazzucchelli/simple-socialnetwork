@@ -1,0 +1,32 @@
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    text-decoration: none;
+    text-align: center;
+    background: var(--c-secondary);
+    transition: opacity .2s ease-out;
+    border: 0;
+
+    &:hover {
+        opacity: .7;
+    }
+
+    &.rounded {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        position: relative;
+        padding: 0;
+
+        &:not(.no-shadow) {
+            box-shadow: 0px 2px 5px 1px rgba(204, 204, 204, 0.6);
+        }
+
+        i {
+            font-size: 16px;
+        }
+    }
+}

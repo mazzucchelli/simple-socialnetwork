@@ -36,13 +36,17 @@ class Comments extends Component {
             return '';
         } else {
             return (
-                <ul>
-                    {comments.map(comment => (
-                        <li key={comment.id}>
-                            {comment.name} - {comment.body} - {comment.email}
-                        </li>
-                    ))}
-                </ul>
+                <div className="comments-wrap">
+                    <ul>
+                        {comments.map(comment => (
+                            <li key={comment.id}>
+                                <span className="author">{comment.email}</span>
+                                <h6>{comment.name}</h6>
+                                <p>{comment.body}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )
         }
     }

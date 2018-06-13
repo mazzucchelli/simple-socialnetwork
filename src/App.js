@@ -6,7 +6,6 @@ import AddPost from './components/AddPost.js';
 import Article from './components/Article.js';
 
 import './App.css';
-import './assets/avatar.jpg';
 
 class App extends Component {
     constructor(props) {

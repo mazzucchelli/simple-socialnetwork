@@ -54,8 +54,8 @@ class AddPost extends Component {
         return (
             <form onSubmit={this.onSubmit.bind(this)}>
                 <input type="text" placeholder="Dai un titolo al tuo post" onChange={this.onTitleChange.bind(this)} value={this.state.postTitle}/>
-                <textarea placeholder="Scrivi un post.." onChange={this.onBodyChange.bind(this)} value={this.state.postBody}></textarea>
-                <button>Submit</button>
+                <textarea rows="4" placeholder="Scrivi un post.." onChange={this.onBodyChange.bind(this)} value={this.state.postBody}></textarea>
+                <button className="btn rounded"><i className="fas fa-arrow-right"></i></button>
             </form>
         )
     }

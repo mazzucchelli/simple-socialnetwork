@@ -5,7 +5,7 @@ const sass = require('gulp-sass');
 const cleancss = require('gulp-cleancss');
 
 gulp.task('scss', () => {
-    return gulp.src('./scss/*.scss')
+    return gulp.src('./scss/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(autoprefixer({
@@ -24,5 +24,5 @@ gulp.task('scss', () => {
 );
 
 gulp.task('default', () => {
-    return gulp.watch('./scss/*.scss', gulp.series('scss'));
+    return gulp.watch('./scss/*.scss', gulp.series('scss'))
 });

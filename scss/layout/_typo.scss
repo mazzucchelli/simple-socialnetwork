@@ -3,7 +3,7 @@ h1, h2 , h3, h4, h5, h6 {
     color: $default-font-color;
     font-weight: 900;
     line-height: $default-line-height;
-    letter-spacing: 0.5;
+    letter-spacing: 0.0625em;
     margin-bottom: 6px;
 }
 
@@ -37,7 +37,7 @@ p, a, li, span, td, th {
     color: $default-font-color;
     font-weight: $default-font-weight;
     line-height: $default-line-height;
-    letter-spacing: 0.5;
+    letter-spacing: 0.0625em;
 }
 
 p, a, span {
@@ -50,4 +50,8 @@ a {
 
 strong, .strong, th {
     font-weight: 700;
+}
+
+label, input, textarea {
+    letter-spacing: 0.0625em;
 }
