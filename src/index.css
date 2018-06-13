@@ -644,6 +644,7 @@ textarea {
     border-radius: 50%; }
   .users-status li.online:before {
     background: var(--c-success);
+    left: -1px;
     opacity: 1;
     width: 7px;
     height: 7px; }
