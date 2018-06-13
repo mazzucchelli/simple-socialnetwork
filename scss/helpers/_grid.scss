@@ -1,0 +1,16 @@
+@include __build-grid-cells-system();
+@include __build-grid-template-col-system();
+
+.grid {
+    @include grid;
+
+    .grid {
+        --grid-padding: 0;
+        --grid-margin-bottom: var(--grid-gap-y);
+    }
+
+    .cell {
+        grid-column-end: span $max-columns-allowed;
+    }
+}
+

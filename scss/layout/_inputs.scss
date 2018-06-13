@@ -1,0 +1,9 @@
+input[type="text"],
+textarea {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    color: var(--c-black);
+    border: 1px solid var(--c-primary);
+    letter-spacing: 0.5;
+}
