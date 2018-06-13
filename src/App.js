@@ -11,6 +11,7 @@ import './assets/avatar.jpg';
 class App extends Component {
     constructor(props) {
         super(props);
+        this.deletePost = this.deletePost.bind(this);
         this.state = {
             error: null,
             isLoaded: false,
@@ -54,6 +55,15 @@ class App extends Component {
         this.setState(this.state);
     }
 
+    deletePost(postId) {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+            method: 'DELETE',
+        })
+        .then(result => {
+            console.log('result', result);
+        })
+    }
+
     render() {
         const { error, isLoaded, posts, users } = this.state;
         if (error) {
@@ -83,6 +93,7 @@ class App extends Component {
                                     </div>
                                     <h1 className="h4 title">{post.title}</h1>
                                     <p>{post.body}</p>
+                                    <button className="btn" onClick={() => {this.deletePost(post.id)}}>Remove</button>
                                     <Comments postId={post.id}/>
                                 </article>
                             ))}

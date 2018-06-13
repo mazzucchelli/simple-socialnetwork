@@ -13,29 +13,33 @@ class AddPost extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            body: JSON.stringify({
-                title: this.state.postTitle,
-                body: this.state.postBody,
-                userId: config.currentUserId,
-                id: config.postsLength + 1
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-        .then(res => res.json())
-        .then(result => {
-            config.postsLength += 1;
-            this.props.onUpdatePosts(result.title, result.body, result.userId, result.id);
-            this.setState({
-                postTitle: '',
-                postBody: ''
-            });
-        }, (error) => {
-            console.log('error', error);
-        })
+        if (this.state.postTitle !== '' || this.state.postBody !== '') {
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: this.state.postTitle,
+                    body: this.state.postBody,
+                    userId: config.currentUserId,
+                    id: config.postsLength + 1
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            .then(res => res.json())
+            .then(result => {
+                config.postsLength += 1;
+                this.props.onUpdatePosts(result.title, result.body, result.userId, result.id);
+                this.setState({
+                    postTitle: '',
+                    postBody: ''
+                });
+            }, (error) => {
+                console.log('error', error);
+            })
+        } else {
+            console.log('empty inputs!');
+        }
     }
 
     onTitleChange(e) {
