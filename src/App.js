@@ -74,7 +74,7 @@ class App extends Component {
                             {posts.map(post => (
                                 <Article
                                     key={post.id}
-                                    author={users.filter(user => user.id === post.userId).map(user => user.name)}
+                                    author={users.filter(user => user.id === post.userId).map(user => user.name).toString()}
                                     postId={post.id}
                                     postTitle={post.title}
                                     postBody={post.body} />

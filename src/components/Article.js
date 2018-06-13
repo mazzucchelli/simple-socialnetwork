@@ -15,18 +15,11 @@ class Article extends Component {
         };
         this.deletePost = this.deletePost.bind(this);
         this.editPost = this.editPost.bind(this);
+        this.updatePost = this.updatePost.bind(this);
     }
 
     componentDidMount() {
 
-    }
-
-    onTitleChange(e) {
-        this.setState({ titleToEdit: e.target.value })
-    }
-
-    onBodyChange(e) {
-        this.setState({ bodyToEdit: e.target.value })
     }
 
     getNormalView() {
@@ -63,6 +56,8 @@ class Article extends Component {
                 </div>
                 <input type="text" placeholder="Dai un titolo al tuo post" onChange={this.onTitleChange.bind(this)} value={this.state.titleToEdit}/>
                 <textarea placeholder="Scrivi un post.." onChange={this.onBodyChange.bind(this)} value={this.state.bodyToEdit}></textarea>
+                <button className="btn" onClick={() => {this.updatePost(this.props.postId)}}>Update</button>
+                <br />
                 <button className="btn" onClick={() => {this.deletePost(this.props.postId)}}>Remove</button>
                 <br />
                 <button className="btn" onClick={() => {this.editPost(this.props.postId)}}>Edit</button>
@@ -77,6 +72,34 @@ class Article extends Component {
         } else {
             return this.getEditView();
         }
+    }
+
+    onTitleChange(e) {
+        this.setState({ titleToEdit: e.target.value })
+    }
+
+    onBodyChange(e) {
+        this.setState({ bodyToEdit: e.target.value })
+    }
+
+    updatePost(postId) {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                title: this.state.titleToEdit,
+                body: this.state.bodyToEdit
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then(res => res.json())
+        .then(result => {
+            console.log('result', result);
+            this.setState({ isEditing: !this.state.isEditing });
+        }, (error) => {
+            console.log('error', error);
+        })
     }
 
     deletePost(postId) {
@@ -97,11 +120,11 @@ class Article extends Component {
     }
 }
 
-Comments.propTypes = {
+Article.propTypes = {
     postId: PropTypes.number.isRequired,
     postTitle: PropTypes.string,
     postBody: PropTypes.string,
-    author: PropTypes.string
+    author: PropTypes.string.isRequired
 }
 
 export default Article;
