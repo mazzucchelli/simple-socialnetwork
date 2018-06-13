@@ -45,7 +45,7 @@ class App extends Component {
     }
 
     onPostAdd(postTitle, postBody, userId, postId) {
-        this.state.posts.push({
+        this.state.posts.unshift({
             body: postBody,
             id: postId,
             title: postTitle,
@@ -71,7 +71,7 @@ class App extends Component {
                             <AddPost onUpdatePosts={this.onPostAdd.bind(this)} />
                         </section>
                         <section className="posts-wrap">
-                            {posts.reverse().map(post => (
+                            {posts.map(post => (
                                 <article key={post.id} className="article box-layout">
                                     <div className="author">
                                         <div className="avatar-wrap">
