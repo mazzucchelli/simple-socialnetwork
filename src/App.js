@@ -5,7 +5,7 @@ import Sidebar from './components/Sidebar.js';
 import AddPost from './components/AddPost.js';
 import Article from './components/Article.js';
 
-import './App.css';
+import './scss/App.scss';
 
 class App extends Component {
     constructor(props) {
