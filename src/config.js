@@ -1,5 +1,5 @@
 let config  = {
-    currentUserId: 2,
+    currentUserId: 10,
     postsLength: null
 }
 

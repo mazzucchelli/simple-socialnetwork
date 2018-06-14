@@ -7,11 +7,11 @@
     text-decoration: none;
     text-align: center;
     background: var(--c-secondary);
-    transition: opacity .2s ease-out;
+    transition: all .2s ease-out;
     border: 0;
 
     &:hover {
-        opacity: .7;
+        background: var(--c-light-secondary);
     }
 
     &.rounded {
