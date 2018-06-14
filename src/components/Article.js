@@ -129,6 +129,7 @@ class Article extends Component {
             method: 'DELETE',
         })
         .then(result => {
+            this.props.onDelete(postId);
             console.log('result', result);
         })
     }
@@ -147,7 +148,8 @@ Article.propTypes = {
     postTitle: PropTypes.string,
     postBody: PropTypes.string,
     author: PropTypes.string.isRequired,
-    authorId: PropTypes.number.isRequired
+    authorId: PropTypes.number.isRequired,
+    onDelete: PropTypes.func.isRequired
 }
 
 export default Article;

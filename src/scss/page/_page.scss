@@ -2,6 +2,12 @@ body {
     background: #FFFEF8;
 }
 
+.box-layout {
+    box-shadow: 0px 2px 5px 1px rgba(204, 204, 204, 0.6);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
 .page-container {
     --grid-padding: 20px;
 
@@ -9,165 +15,6 @@ body {
     margin: 0 auto;
 }
 
-.box-layout {
-    box-shadow: 0px 2px 5px 1px rgba(204, 204, 204, 0.6);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.submit-post-wrap {
-    background: var(--c-primary);
-    position: relative;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-
-    input[type="text"] {
-        margin-bottom: 10px;
-    }
-
-    .btn {
-        position: absolute;
-        top: calc(100% - 20px);
-        right: 20px;
-    }
-}
-
-.users-status {
-    ul {
-        list-style: none;
-        margin: 0;
-        background: var(--c-primary);
-        line-height: 1.2;
-        color: var(--c-white);
-        position: sticky;
-        top: 20px;
-    }
-
-    li {
-        line-height: 2.4;
-        padding-left: 14px;
-        position: relative;
-        color: var(--c-white);
-        font-weight: 300;
-
-        &:before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 5px;
-            height: 5px;
-            background: var(--c-white);
-            opacity: .3;
-            border-radius: 50%;
-        }
-
-        &.online {
-            &:before {
-                background: var(--c-success);
-                opacity: 1;
-                width: 7px;
-                height: 7px;
-            }
-        }
-    }
-}
-
-.article {
-    padding: 0;
-    margin-bottom: 30px;
-
-    .post-wrap {
-        padding: 20px;
-        position: relative;
-        background: var(--c-white);
-    }
-
-    .author {
-        position: relative;
-        padding: 4px 0;
-        margin-bottom: 20px;
-
-        .avatar-wrap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .author-name {
-            margin: 0;
-            padding-left: 44px;
-            font-size: 12px;
-        }
-    }
-
-    .title {
-        margin-bottom: 20px;
-    }
-
-    p:last-of-type {
-        margin-bottom: 10px;
-    }
-
-    input[type="text"] {
-        margin-bottom: 10px;
-        padding: 0;
-        border: 0;
-
-        @extend h4;
-    }
-
-    textarea {
-        margin-bottom: 20px;
-        padding: 0;
-        border: 0;
-
-        @extend p;
-    }
-
-    .btn-wrap {
-        position: absolute;
-        top: calc(100% - 20px);
-        right: 20px;
-    }
-
-    .btn {
-        margin-left: 20px;
-    }
-
-    .comments-wrap {
-        padding: 20px;
-        padding-top: 30px;
-        background: var(--c-light-grey);
-
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        li:not(:last-child) {
-            padding-bottom: 8px;
-            margin-bottom: 18px;
-            border-bottom: 1px solid var(--c-dark-grey);
-        }
-
-        .author {
-            color: var(--c-primary);
-            font-size: 12px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            padding: 0;
-            display: block;
-        }
-
-        p {
-            font-size: 12px;
-            font-weight: 200;
-        }
-    }
-}
+@import 'sidebar';
+@import 'article';
+@import 'addpost';

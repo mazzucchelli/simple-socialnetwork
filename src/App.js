@@ -54,6 +54,12 @@ class App extends Component {
         this.setState(this.state);
     }
 
+    onPostDelete(postId) {
+        this.setState({
+            posts: this.state.posts.filter((post) => postId !== post.id)
+        })
+    }
+
     render() {
         const { error, isLoaded, posts, users } = this.state;
         if (error) {
@@ -78,7 +84,8 @@ class App extends Component {
                                     authorId={post.userId}
                                     postId={post.id}
                                     postTitle={post.title}
-                                    postBody={post.body} />
+                                    postBody={post.body}
+                                    onDelete={this.onPostDelete.bind(this)} />
                             ))}
                         </section>
                     </main>
