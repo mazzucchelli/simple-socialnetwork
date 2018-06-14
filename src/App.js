@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import update from 'immutability-helper';
 import config from './config.js';
 
 import Sidebar from './components/Sidebar.js';
@@ -60,6 +61,15 @@ class App extends Component {
         })
     }
 
+    onPostEdit(postId, postTitle, postBody) {
+        this.setState({
+            posts: update(this.state.posts, {[config.postsLength - postId]: {
+                title: {$set: postTitle},
+                body: {$set: postBody},
+            }})
+        })
+    }
+
     render() {
         const { error, isLoaded, posts, users } = this.state;
         if (error) {
@@ -85,7 +95,8 @@ class App extends Component {
                                     postId={post.id}
                                     postTitle={post.title}
                                     postBody={post.body}
-                                    onDelete={this.onPostDelete.bind(this)} />
+                                    onDelete={this.onPostDelete.bind(this)}
+                                    onEdit={this.onPostEdit.bind(this)} />
                             ))}
                         </section>
                     </main>

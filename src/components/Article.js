@@ -118,6 +118,7 @@ class Article extends Component {
         .then(res => res.json())
         .then(result => {
             console.log('result', result);
+            this.props.onEdit(postId, this.state.titleToEdit, this.state.bodyToEdit);
             this.setState({ isEditing: !this.state.isEditing });
         }, (error) => {
             console.log('error', error);
@@ -149,7 +150,8 @@ Article.propTypes = {
     postBody: PropTypes.string,
     author: PropTypes.string.isRequired,
     authorId: PropTypes.number.isRequired,
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func,
+    onEdit: PropTypes.func
 }
 
 export default Article;
