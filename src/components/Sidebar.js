@@ -27,13 +27,15 @@ class Sidebar extends Component {
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return (
+                <ul className="box-layout"></ul>
+            )
         } else {
             return (
                 <ul className="box-layout">
                     {users.map(user => (
                         <li key={user.id} className={( user.id === config.currentUserId ) ? 'online' : ''}>
-                            {user.name}
+                            <p>{user.name}</p>
                         </li>
                     ))}
                 </ul>

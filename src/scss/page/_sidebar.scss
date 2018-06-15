@@ -7,15 +7,20 @@
         color: var(--c-white);
         position: sticky;
         top: 20px;
+        min-height: 400px;
     }
 
     li {
-        line-height: 2.4;
-        font-size: 15px;
-        padding-left: 14px;
         position: relative;
-        color: var(--c-white);
-        font-weight: 300;
+        padding-left: 14px;
+
+        p {
+            line-height: 2.4;
+            font-size: 15px;
+            color: var(--c-white);
+            font-weight: 300;
+            margin: 0;
+        }
 
         &:before {
             content: '';

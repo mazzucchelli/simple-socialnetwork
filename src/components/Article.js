@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import config from '../config.js';
 
+import avatar from '../assets/avatar.jpg';
+import avatarOnline from '../assets/avatar-online.jpg';
+
 import Comments from './Comments.js';
 
 class Article extends Component {
@@ -19,17 +22,13 @@ class Article extends Component {
         this.updatePost = this.updatePost.bind(this);
     }
 
-    componentDidMount() {
-
-    }
-
     getNormalView() {
         return (
             <article className="article box-layout">
                 <div className="post-wrap">
                     <div className="author">
                         <div className="avatar-wrap">
-                            <img src="https://www.epay.com/en/templates/Epay.en/assets/images/avatar.jpg" alt={this.props.author} />
+                        <img src={( this.props.authorId === config.currentUserId ) ? avatarOnline : avatar} alt={this.props.author} />
                         </div>
                         <span className="author-name">
                             {this.props.author}
@@ -50,7 +49,7 @@ class Article extends Component {
                 <div className="post-wrap">
                     <div className="author">
                         <div className="avatar-wrap">
-                            <img src="https://www.epay.com/en/templates/Epay.en/assets/images/avatar.jpg" alt={this.props.author} />
+                            <img src={( this.props.authorId === config.currentUserId ) ? avatarOnline : avatar} alt={this.props.author} />
                         </div>
                         <span className="author-name">
                             {this.props.author}
@@ -130,6 +129,7 @@ class Article extends Component {
             method: 'DELETE',
         })
         .then(result => {
+            config.postsLength = config.postsLength - 1;
             this.props.onDelete(postId);
             console.log('result', result);
         })
