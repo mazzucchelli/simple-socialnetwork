@@ -136,6 +136,13 @@ class Article extends Component {
     }
 
     editPost(postId) {
+        if (!this.state.isEditing) {
+            this.setState({
+                titleToEdit: this.props.postTitle,
+                bodyToEdit: this.props.postBody,
+                isEditing: !this.state.isEditing
+            })
+        }
         this.setState({ isEditing: !this.state.isEditing });
     }
 
