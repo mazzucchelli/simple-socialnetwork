@@ -28,6 +28,7 @@ class AddPost extends Component {
             })
             .then(res => res.json())
             .then(result => {
+                console.log('result', result);
                 config.postsLength += 1;
                 this.props.onUpdatePosts(result.title, result.body, result.userId, result.id);
                 this.setState({

@@ -212,16 +212,28 @@ textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    border-radius: 0;
 }
 
 button,
 input {
     overflow: visible;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    border-radius: 0;
 }
 
 button,
 select {
     text-transform: none;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    border-radius: 0;
 }
 
 button,
